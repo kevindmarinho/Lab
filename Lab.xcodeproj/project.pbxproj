@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0047589C2AC607B7002C2C0F /* TileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0047589B2AC607B7002C2C0F /* TileSet.sks */; };
+		0047589E2AC609CD002C2C0F /* TileMap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0047589D2AC609CD002C2C0F /* TileMap.sks */; };
 		287D35FA2AC5ECD600A0861C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287D35F92AC5ECD600A0861C /* AppDelegate.swift */; };
 		287D35FC2AC5ECD600A0861C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 287D35FB2AC5ECD600A0861C /* GameScene.sks */; };
 		287D35FE2AC5ECD600A0861C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 287D35FD2AC5ECD600A0861C /* Actions.sks */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0047589B2AC607B7002C2C0F /* TileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSet.sks; sourceTree = "<group>"; };
+		0047589D2AC609CD002C2C0F /* TileMap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = TileMap.sks; path = ../TileMap.sks; sourceTree = "<group>"; };
 		287D35F62AC5ECD600A0861C /* Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		287D35F92AC5ECD600A0861C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		287D35FB2AC5ECD600A0861C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 				287D36032AC5ECD600A0861C /* Main.storyboard */,
 				287D36062AC5ECD700A0861C /* Assets.xcassets */,
 				287D36082AC5ECD700A0861C /* LaunchScreen.storyboard */,
+				0047589B2AC607B7002C2C0F /* TileSet.sks */,
+				0047589D2AC609CD002C2C0F /* TileMap.sks */,
 			);
 			path = Lab;
 			sourceTree = "<group>";
@@ -131,8 +137,10 @@
 			files = (
 				287D36052AC5ECD600A0861C /* Main.storyboard in Resources */,
 				287D35FC2AC5ECD600A0861C /* GameScene.sks in Resources */,
+				0047589E2AC609CD002C2C0F /* TileMap.sks in Resources */,
 				287D36072AC5ECD700A0861C /* Assets.xcassets in Resources */,
 				287D360A2AC5ECD700A0861C /* LaunchScreen.storyboard in Resources */,
+				0047589C2AC607B7002C2C0F /* TileSet.sks in Resources */,
 				287D35FE2AC5ECD600A0861C /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
