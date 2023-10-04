@@ -11,7 +11,9 @@ import GameplayKit
 class GameScene: SKScene {
    
     let sceneNode = SKNode()
-    let kevin = SKSpriteNode(imageNamed: "kevin")
+    let playerNode = PlayerNode()
+    let joystick = JoystickNode()
+    var joystickInUse = false
  
     override func sceneDidLoad() {
         scene?.addChild(sceneNode)
@@ -26,49 +28,56 @@ class GameScene: SKScene {
                 }
             }
         }
-        kevin.physicsBody = SKPhysicsBody(circleOfRadius: 8)
-        kevin.position = CGPoint(x: 30, y: 0)
-        kevin.physicsBody?.affectedByGravity = false
-        kevin.physicsBody?.categoryBitMask = .player
-        kevin.physicsBody?.collisionBitMask = .wall
-        sceneNode.addChild(kevin)
+//        joystick.joystickBack.position = CGPoint(x: (self.view?.frame.minX)!, y: (self.view?.frame.midY)!-200)
+//        joystick.joystickButton.position = CGPoint(x: (self.view?.frame.minX)!, y: (self.view?.frame.midY)!-200)
+        joystick.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.1)
+        sceneNode.addChild(playerNode)
+        sceneNode.addChild(joystick)
+        
     }
-    
+     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
     
-    func tileMapPhysicsBody(map: SKTileMapNode) {
-        let tileMap = map
-        let tileSize = tileMap.tileSize
-        let startLocation: CGPoint = tileMap.position
-        let halfWidth = CGFloat(tileMap.numberOfColumns) / 2.0 * tileSize.width
-        let halfHeight = CGFloat(tileMap.numberOfRows) / 2.0 * tileSize.height
-        
-        for columnIndex in 0..<tileMap.numberOfColumns {
-            for rowIndex in 0..<tileMap.numberOfRows {
-                if let tileDefinition = tileMap.tileDefinition(atColumn: columnIndex, row: rowIndex) {
-                    let tileArray = tileDefinition.textures
-                    let tileTextures = tileArray[0]
-                    let x = CGFloat(columnIndex) * tileSize.width - halfWidth + (tileSize.width/2)
-                    let y = CGFloat(rowIndex) * tileSize.height - halfHeight + (tileSize.height/2)
-                    
-                    let tileNode = SKSpriteNode(texture: tileTextures)
-                    tileNode.position = CGPoint(x: x, y: y)
-                    tileNode.physicsBody = SKPhysicsBody(texture: tileTextures, size: CGSize(width: tileTextures.size().width, height: tileTextures.size().height))
-                    tileNode.physicsBody?.categoryBitMask = .wall
-                    tileNode.physicsBody?.collisionBitMask = .player
-                    tileNode.physicsBody?.contactTestBitMask = .player
-                    tileNode.physicsBody?.affectedByGravity = false
-                    tileNode.physicsBody?.allowsRotation = false
-                    tileNode.physicsBody?.friction = 1
-//                    tileNode.zPosition = 1
-                    tileNode.position = CGPoint(x: tileNode.position.x + startLocation.x, y: tileNode.position.y + startLocation.y)
-                    
-                    self.addChild(tileNode)
-                }
+    func touchMoved(touch: UITouch) {
+        let location = touch.location(in: self)
+        if (joystickInUse) {
+            let vector = CGVector(dx: location.x - joystick.position.x, dy: location.y - joystick.position.y)
+            
+            let angle = atan2(vector.dy, vector.dx)
+            
+            let distanceFromCenter = CGFloat(joystick.frame.size.height/2)
+            
+            let distanceX = CGFloat(sin(angle - distanceFromCenter))
+            let distanceY = CGFloat(cos(angle - distanceFromCenter))
+            
+            if(joystick.frame.contains(location)) {
+                joystick.joystickButton.position = location
+            }
+            else {
+                joystick.joystickButton.position = CGPoint(x: joystick.position.x - distanceX, y: joystick.position.y + distanceY)
             }
         }
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            
+            if (joystick.joystickButton.frame.contains(location)){
+                joystickInUse = true
+                print("tocou")
+            } else {
+                joystickInUse = false
+            }
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            self.touchMoved(touch: touch)
+        }
     }
 }

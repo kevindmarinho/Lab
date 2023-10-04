@@ -16,6 +16,9 @@
 		287D36052AC5ECD600A0861C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287D36032AC5ECD600A0861C /* Main.storyboard */; };
 		287D36072AC5ECD700A0861C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 287D36062AC5ECD700A0861C /* Assets.xcassets */; };
 		287D360A2AC5ECD700A0861C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287D36082AC5ECD700A0861C /* LaunchScreen.storyboard */; };
+		288DA0362AC750AD0098EA6E /* GameScene+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DA0352AC750AD0098EA6E /* GameScene+Tools.swift */; };
+		288DA03A2AC751640098EA6E /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DA0392AC751640098EA6E /* PlayerNode.swift */; };
+		288DA03C2AC767910098EA6E /* JoystickNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DA03B2AC767910098EA6E /* JoystickNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		287D36042AC5ECD600A0861C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		287D36062AC5ECD700A0861C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		287D36092AC5ECD700A0861C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		288DA0352AC750AD0098EA6E /* GameScene+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Tools.swift"; sourceTree = "<group>"; };
+		288DA0392AC751640098EA6E /* PlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
+		288DA03B2AC767910098EA6E /* JoystickNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,7 @@
 		287D35F82AC5ECD600A0861C /* Lab */ = {
 			isa = PBXGroup;
 			children = (
+				288DA0382AC751430098EA6E /* Nodes */,
 				0047589D2AC609CD002C2C0F /* GameScene.sks */,
 				287D35F92AC5ECD600A0861C /* AppDelegate.swift */,
 				287D35FF2AC5ECD600A0861C /* GameScene.swift */,
@@ -70,8 +77,26 @@
 				287D36082AC5ECD700A0861C /* LaunchScreen.storyboard */,
 				0047589B2AC607B7002C2C0F /* TileSet.sks */,
 				008D63562AC71C5600F03EAB /* PhysicsBody+BitMask.swift */,
+				288DA0352AC750AD0098EA6E /* GameScene+Tools.swift */,
+				288DA0372AC751230098EA6E /* Entities */,
 			);
 			path = Lab;
+			sourceTree = "<group>";
+		};
+		288DA0372AC751230098EA6E /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		288DA0382AC751430098EA6E /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				288DA0392AC751640098EA6E /* PlayerNode.swift */,
+				288DA03B2AC767910098EA6E /* JoystickNode.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +174,11 @@
 			files = (
 				287D36002AC5ECD600A0861C /* GameScene.swift in Sources */,
 				287D36022AC5ECD600A0861C /* GameViewController.swift in Sources */,
+				288DA03A2AC751640098EA6E /* PlayerNode.swift in Sources */,
+				288DA0362AC750AD0098EA6E /* GameScene+Tools.swift in Sources */,
 				287D35FA2AC5ECD600A0861C /* AppDelegate.swift in Sources */,
 				008D63572AC71C5600F03EAB /* PhysicsBody+BitMask.swift in Sources */,
+				288DA03C2AC767910098EA6E /* JoystickNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

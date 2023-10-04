@@ -1,0 +1,32 @@
+//
+//  JoystickNode.swift
+//  Lab
+//
+//  Created by kevin marinho on 29/09/23.
+//
+
+import Foundation
+import SpriteKit
+
+class JoystickNode: SKNode {
+    public var joystickBack: SKSpriteNode
+    public var joystickButton: SKSpriteNode
+    
+    override init() {
+        joystickBack = .init(imageNamed: "JoystickBack")
+        joystickButton = .init(imageNamed: "JoystickButton")
+
+        super.init()
+        
+        self.addChild(joystickBack)
+        self.addChild(joystickButton)
+        self.setScale(1/10)
+        self.position = CGPoint(x: 40, y: -30)
+        self.zPosition = 50
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
