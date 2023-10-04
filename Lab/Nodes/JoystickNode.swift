@@ -23,7 +23,6 @@ class JoystickNode: SKNode {
         
         self.addChild(joystickBack)
         self.addChild(joystickButton)
-      //  self.position = CGPoint(x: 80, y: -30)
         self.zPosition = 50
     }
     
