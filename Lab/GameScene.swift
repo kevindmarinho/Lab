@@ -30,7 +30,7 @@ class GameScene: SKScene {
         }
 //        joystick.joystickBack.position = CGPoint(x: (self.view?.frame.minX)!, y: (self.view?.frame.midY)!-200)
 //        joystick.joystickButton.position = CGPoint(x: (self.view?.frame.minX)!, y: (self.view?.frame.midY)!-200)
-        joystick.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.1)
+//        joystick.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.1)
         sceneNode.addChild(playerNode)
         sceneNode.addChild(joystick)
         
@@ -65,9 +65,9 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
-            
             if (joystick.joystickButton.frame.contains(location)){
                 joystickInUse = true
+                
                 print("tocou")
             } else {
                 joystickInUse = false

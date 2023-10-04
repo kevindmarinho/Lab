@@ -18,10 +18,11 @@ class JoystickNode: SKNode {
 
         super.init()
         
+        joystickBack.setScale(1/10)
+        joystickButton.setScale(1/10)
+        
         self.addChild(joystickBack)
         self.addChild(joystickButton)
-        self.setScale(1/10)
-        self.position = CGPoint(x: 40, y: -30)
         self.zPosition = 50
     }
     
