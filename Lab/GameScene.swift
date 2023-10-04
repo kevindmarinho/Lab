@@ -28,8 +28,8 @@ class GameScene: SKScene {
                 }
             }
         }
-//        joystick.joystickBack.position = CGPoint(x: (self.view?.frame.minX)!, y: (self.view?.frame.midY)!-200)
-//        joystick.joystickButton.position = CGPoint(x: (self.view?.frame.minX)!, y: (self.view?.frame.midY)!-200)
+        joystick.joystickBack.position = CGPoint(x: -80, y: -30)
+        joystick.joystickButton.position = CGPoint(x: -80, y: -30)
 //        joystick.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.1)
         sceneNode.addChild(playerNode)
         sceneNode.addChild(joystick)
@@ -43,20 +43,21 @@ class GameScene: SKScene {
     func touchMoved(touch: UITouch) {
         let location = touch.location(in: self)
         if (joystickInUse) {
-            let vector = CGVector(dx: location.x - joystick.position.x, dy: location.y - joystick.position.y)
+            let vector = CGVector(dx: location.x - joystick.joystickBack.position.x, dy: location.y - joystick.joystickBack.position.y)
             
             let angle = atan2(vector.dy, vector.dx)
             
-            let distanceFromCenter = CGFloat(joystick.frame.size.height/2)
+            let distanceFromCenter = CGFloat(joystick.joystickBack.frame.size.height/2)
             
             let distanceX = CGFloat(sin(angle - distanceFromCenter))
             let distanceY = CGFloat(cos(angle - distanceFromCenter))
             
-            if(joystick.frame.contains(location)) {
+            if(joystick.joystickBack.frame.contains(location)) {
                 joystick.joystickButton.position = location
             }
             else {
-                joystick.joystickButton.position = CGPoint(x: joystick.position.x - distanceX, y: joystick.position.y + distanceY)
+                joystick.joystickButton.position = CGPoint(x: joystick.joystickBack.position.x - distanceX, y: joystick.joystickBack.position.y + distanceY)
+                joystick.joystickButton.position = CGPoint(x: -80, y: -30)
             }
         }
         
@@ -71,6 +72,7 @@ class GameScene: SKScene {
                 print("tocou")
             } else {
                 joystickInUse = false
+                print("soltou ")
             }
         }
     }
