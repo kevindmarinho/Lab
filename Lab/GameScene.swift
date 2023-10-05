@@ -15,6 +15,10 @@ class GameScene: SKScene {
     let joystick = JoystickNode()
     var joystickInUse = false
     
+    var velocityX: CGFloat = 0.0
+    var velocityY: CGFloat = 0.0
+    
+    
     override func sceneDidLoad() {
         scene?.addChild(sceneNode)
     }
@@ -33,7 +37,8 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        self.playerNode.position.x += velocityX
+        self.playerNode.position.y += velocityY
     }
     
     func touchMoved(touch: UITouch) {
@@ -53,6 +58,9 @@ class GameScene: SKScene {
             } else {
                 joystick.joystickButton.position = location
             }
+            
+            velocityX = (joystick.joystickButton.position.x - joystick.joystickBack.position.x) / 5
+            velocityY = (joystick.joystickButton.position.y - joystick.joystickBack.position.y) / 5
         }
     }
 
@@ -78,6 +86,7 @@ class GameScene: SKScene {
         }
     }
     
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             self.touchMoved(touch: touch)
@@ -85,9 +94,24 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(joystickInUse) {
+            movimentOver()
+        }
+        
         for _ in touches {
             joystickInUse = false
             joystick.isHidden = true
         }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (joystickInUse) {
+            movimentOver()
+        }
+    }
+    
+    func movimentOver() {
+        velocityX = 0
+        velocityY = 0
     }
 }

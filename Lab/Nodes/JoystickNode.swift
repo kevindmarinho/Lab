@@ -7,6 +7,8 @@
 
 import Foundation
 import SpriteKit
+import GameplayKit
+
 
 class JoystickNode: SKNode {
     public var joystickBack: SKSpriteNode
