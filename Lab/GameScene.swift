@@ -23,8 +23,6 @@ class GameScene: SKScene {
             if(node.name == "tileMap") {
                 if let someTileMap: SKTileMapNode = node as? SKTileMapNode {
                     tileMapPhysicsBody(map: someTileMap)
-                    //                    someTileMap.removeFromParent()
-                    //                    sceneNode.addChild(someTileMap)
                 }
             }
         }
@@ -40,29 +38,26 @@ class GameScene: SKScene {
     }
     
     func touchMoved(touch: UITouch) {
-        
-        
         if (joystickInUse) {
             let location = touch.location(in: self)
+            
             let vector = CGVector(dx: location.x - joystick.joystickBack.position.x, dy: location.y - joystick.joystickBack.position.y)
             
-            let angle = atan2(vector.dy, vector.dx)
+            let distanceFromCenter = hypot(vector.dx, vector.dy)
             
-            let distanceFromCenter = CGFloat(joystick.joystickBack.frame.size.height/2)
+            let maxDistance = joystick.joystickBack.frame.size.width / 2
             
-            let distanceX = CGFloat(sin(angle - distanceFromCenter))
-            let distanceY = CGFloat(cos(angle - distanceFromCenter))
-            
-            if(joystick.joystickBack.frame.contains(location)) {
+            if distanceFromCenter > maxDistance {
+                let scaleFactor = maxDistance / distanceFromCenter
+                let limitedVector = CGVector(dx: vector.dx * scaleFactor, dy: vector.dy * scaleFactor)
+                joystick.joystickButton.position = CGPoint(x: joystick.joystickBack.position.x + limitedVector.dx, y: joystick.joystickBack.position.y + limitedVector.dy)
+            } else {
                 joystick.joystickButton.position = location
             }
-            else {
-                joystick.joystickButton.position = CGPoint(x: joystick.joystickBack.position.x - distanceX, y: joystick.joystickBack.position.y + distanceY)
-                
-            }
         }
-        
     }
+
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
