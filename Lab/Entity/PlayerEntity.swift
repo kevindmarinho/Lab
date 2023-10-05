@@ -7,7 +7,7 @@
 
 import SpriteKit
 import GameplayKit
-
+//
 class PlayerEntity: GKEntity {
     
     var position: CGPoint?
