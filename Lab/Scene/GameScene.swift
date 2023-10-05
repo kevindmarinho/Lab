@@ -15,7 +15,7 @@ class GameScene: SKScene {
     let joystick = JoystickNode()
     var playerEntity: PlayerEntity?
     var joystickInUse = false
-    private var entities: [GKEntity] = []
+    var entities: [GKEntity] = []
     
     override func sceneDidLoad() {
         scene?.addChild(sceneNode)
@@ -29,15 +29,9 @@ class GameScene: SKScene {
                 }
             }
         }
-        
-        playerEntity = PlayerEntity(scene: self)
-        
-        // Adicione o playerEntity à cena
-        if let playerEntity = playerEntity,
-           let playerNode = playerEntity.component(ofType: GKSKNodeComponent.self)?.node {
-            sceneNode.addChild(playerNode)
-        }
-        entities.append(playerEntity!)
+       
+        creatingPlayer()
+       
         joystick.joystickBack.isHidden = true
         joystick.joystickButton.isHidden = true
         sceneNode.addChild(joystick)
@@ -50,25 +44,24 @@ class GameScene: SKScene {
         }
     }
     
-    //    func touchMoved(touch: UITouch) {
-    //        if (joystickInUse) {
-    //            let location = touch.location(in: self)
-    //
-    //            let vector = CGVector(dx: location.x - joystick.joystickBack.position.x, dy: location.y - joystick.joystickBack.position.y)
-    //
-    //            let distanceFromCenter = hypot(vector.dx, vector.dy)
-    //
-    //            let maxDistance = joystick.joystickBack.frame.size.width / 2
-    //
-    //            if distanceFromCenter > maxDistance {
-    //                let scaleFactor = maxDistance / distanceFromCenter
-    //                let limitedVector = CGVector(dx: vector.dx * scaleFactor, dy: vector.dy * scaleFactor)
-    //                joystick.joystickButton.position = CGPoint(x: joystick.joystickBack.position.x + limitedVector.dx, y: joystick.joystickBack.position.y + limitedVector.dy)
-    //            } else {
-    //                joystick.joystickButton.position = location
-    //            }
-    //        }
-    //    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            joystick.joystickBack.position = location
+            joystick.joystickButton.position = location
+            
+            if (joystick.joystickButton.frame.contains(location)){
+                joystickInUse = true
+                joystick.joystickButton.isHidden = false
+                joystick.joystickBack.isHidden = false
+            } else {
+                joystickInUse = false
+                joystick.joystickButton.isHidden = true
+                joystick.joystickBack.isHidden = true
+            }
+        }
+    }
+    
     
     func touchMoved(touch: UITouch) {
         if (joystickInUse) {
@@ -97,28 +90,6 @@ class GameScene: SKScene {
             }
         }
     }
-
-    
-    
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: self)
-            joystick.joystickBack.position = location
-            joystick.joystickButton.position = location
-            
-            if (joystick.joystickButton.frame.contains(location)){
-                joystickInUse = true
-                joystick.joystickButton.isHidden = false
-                joystick.joystickBack.isHidden = false
-            } else {
-                joystickInUse = false
-                joystick.joystickButton.isHidden = true
-                joystick.joystickBack.isHidden = true
-            }
-        }
-    }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
@@ -134,3 +105,4 @@ class GameScene: SKScene {
         }
     }
 }
+

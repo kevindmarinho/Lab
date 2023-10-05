@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import GameplayKit
 
 extension GameScene {
     func tileMapPhysicsBody(map: SKTileMapNode) {
@@ -32,6 +33,7 @@ extension GameScene {
                     tileNode.physicsBody?.contactTestBitMask = .player
                     tileNode.physicsBody?.affectedByGravity = false
                     tileNode.physicsBody?.allowsRotation = false
+                    tileNode.physicsBody?.isDynamic = false
                     tileNode.physicsBody?.friction = 1
 //                    tileNode.zPosition = 1
                     tileNode.position = CGPoint(x: tileNode.position.x + startLocation.x, y: tileNode.position.y + startLocation.y)
@@ -41,5 +43,16 @@ extension GameScene {
             }
         }
         
+    }
+    
+    func creatingPlayer() {
+        
+        playerEntity = PlayerEntity(scene: self)
+        
+        if let playerEntity = playerEntity,
+           let playerNode = playerEntity.component(ofType: GKSKNodeComponent.self)?.node {
+            addChild(playerNode)
+        }
+        entities.append(playerEntity!)
     }
 }

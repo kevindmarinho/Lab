@@ -16,8 +16,12 @@ class PlayerEntity: GKEntity {
         super.init()
         
         let playerNode = PlayerNode()
+        
+        let movementComponent = MovementComponent()
+        movementComponent.node = playerNode
+        
         self.addComponent(GKSKNodeComponent(node: playerNode))
-        self.addComponent(MovementComponent())
+        self.addComponent(movementComponent)
     }
     
     required init?(coder: NSCoder) {

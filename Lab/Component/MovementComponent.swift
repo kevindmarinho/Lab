@@ -11,7 +11,7 @@ import SpriteKit
 class MovementComponent: GKComponent {
     
     var node: SKNode?
-    var moveSpeed: CGFloat = 100.0 // Velocidade de movimento do jogador
+    var moveSpeed: CGFloat = 1.0 // Velocidade de movimento do jogador
     
     func move(withDirection direction: CGVector) {
         guard let nodeComponent = entity?.component(ofType: GKSKNodeComponent.self) else {
@@ -26,13 +26,10 @@ class MovementComponent: GKComponent {
     
     public func changeDirection(_ direction: CGVector) {
         if direction == CGVector(dx: 0, dy: 0) {
-            print(direction)
-            //            stateMachinComp?.stateMachine.enter(ChickenAnimationsStates.Idle.self)
         } else {
-            node?.xScale = direction.dx > 0 ? 1.0 : -1.0
+//            node?.xScale = direction.dx > 0 ? 1.0 : -1.0
             node?.position.x += moveSpeed * direction.dx
             node?.position.y += moveSpeed * direction.dy
-            //            stateMachinComp?.stateMachine.enter(ChickenAnimationsStates.Walk.self)
         }
     }
     
