@@ -26,8 +26,7 @@ class GameScene: SKScene {
                 }
             }
         }
-        joystick.joystickBack.isHidden = true
-        joystick.joystickButton.isHidden = true
+        joystick.isHidden = true
         sceneNode.addChild(playerNode)
         sceneNode.addChild(joystick)
         
@@ -67,13 +66,13 @@ class GameScene: SKScene {
             
             if (joystick.joystickButton.frame.contains(location)){
                 joystickInUse = true
-                joystick.joystickButton.isHidden = false
-                joystick.joystickBack.isHidden = false
+                joystick.isHidden = false
+
                 print("tocou")
             } else {
                 joystickInUse = false
-                joystick.joystickButton.isHidden = true
-                joystick.joystickBack.isHidden = true
+                joystick.isHidden = true
+
                 print("soltou ")
             }
         }
@@ -88,8 +87,7 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for _ in touches {
             joystickInUse = false
-            joystick.joystickButton.isHidden = true
-            joystick.joystickBack.isHidden = true
+            joystick.isHidden = true
         }
     }
 }
