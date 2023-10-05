@@ -19,9 +19,10 @@ class PlayerNode: SKNode {
         
         player.physicsBody = SKPhysicsBody(circleOfRadius: 12)
         player.physicsBody?.affectedByGravity = false
+        player.physicsBody?.allowsRotation = false
+        player.physicsBody?.isDynamic = true
         player.physicsBody?.categoryBitMask = .player
         player.physicsBody?.collisionBitMask = .wall
-        player.physicsBody?.allowsRotation = false
         
         player.position = CGPoint(x: 20, y: 10)
         self.addChild(player)

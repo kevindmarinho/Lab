@@ -10,6 +10,11 @@
 		0047589C2AC607B7002C2C0F /* TileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0047589B2AC607B7002C2C0F /* TileSet.sks */; };
 		0047589E2AC609CD002C2C0F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0047589D2AC609CD002C2C0F /* GameScene.sks */; };
 		008D63572AC71C5600F03EAB /* PhysicsBody+BitMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008D63562AC71C5600F03EAB /* PhysicsBody+BitMask.swift */; };
+		00F89F1F2ACF33020046D348 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F89F1E2ACF33020046D348 /* PlayerEntity.swift */; };
+		00F89F222ACF34440046D348 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F89F212ACF34440046D348 /* PositionComponent.swift */; };
+		00F89F242ACF36220046D348 /* VelocityComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F89F232ACF36220046D348 /* VelocityComponent.swift */; };
+		00F89F272ACF367A0046D348 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F89F262ACF367A0046D348 /* MovementSystem.swift */; };
+		00F89F292ACF41C30046D348 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F89F282ACF41C30046D348 /* MovementComponent.swift */; };
 		287D35FA2AC5ECD600A0861C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287D35F92AC5ECD600A0861C /* AppDelegate.swift */; };
 		287D36002AC5ECD600A0861C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287D35FF2AC5ECD600A0861C /* GameScene.swift */; };
 		287D36022AC5ECD600A0861C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287D36012AC5ECD600A0861C /* GameViewController.swift */; };
@@ -25,6 +30,11 @@
 		0047589B2AC607B7002C2C0F /* TileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TileSet.sks; sourceTree = "<group>"; };
 		0047589D2AC609CD002C2C0F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../GameScene.sks; sourceTree = "<group>"; };
 		008D63562AC71C5600F03EAB /* PhysicsBody+BitMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhysicsBody+BitMask.swift"; sourceTree = "<group>"; };
+		00F89F1E2ACF33020046D348 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
+		00F89F212ACF34440046D348 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
+		00F89F232ACF36220046D348 /* VelocityComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelocityComponent.swift; sourceTree = "<group>"; };
+		00F89F262ACF367A0046D348 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
+		00F89F282ACF41C30046D348 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 		287D35F62AC5ECD600A0861C /* Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		287D35F92AC5ECD600A0861C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		287D35FF2AC5ECD600A0861C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -48,6 +58,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00F89F1D2ACF32EF0046D348 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				00F89F1E2ACF33020046D348 /* PlayerEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		00F89F202ACF34270046D348 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				00F89F212ACF34440046D348 /* PositionComponent.swift */,
+				00F89F232ACF36220046D348 /* VelocityComponent.swift */,
+				00F89F282ACF41C30046D348 /* MovementComponent.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		00F89F252ACF36640046D348 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				00F89F262ACF367A0046D348 /* MovementSystem.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
 		287D35ED2AC5ECD600A0861C = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +103,9 @@
 		287D35F82AC5ECD600A0861C /* Lab */ = {
 			isa = PBXGroup;
 			children = (
+				00F89F1D2ACF32EF0046D348 /* Entity */,
+				00F89F202ACF34270046D348 /* Component */,
+				00F89F252ACF36640046D348 /* System */,
 				288DA0382AC751430098EA6E /* Nodes */,
 				0047589D2AC609CD002C2C0F /* GameScene.sks */,
 				287D35F92AC5ECD600A0861C /* AppDelegate.swift */,
@@ -78,16 +117,8 @@
 				0047589B2AC607B7002C2C0F /* TileSet.sks */,
 				008D63562AC71C5600F03EAB /* PhysicsBody+BitMask.swift */,
 				288DA0352AC750AD0098EA6E /* GameScene+Tools.swift */,
-				288DA0372AC751230098EA6E /* Entities */,
 			);
 			path = Lab;
-			sourceTree = "<group>";
-		};
-		288DA0372AC751230098EA6E /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		288DA0382AC751430098EA6E /* Nodes */ = {
@@ -176,9 +207,14 @@
 				287D36022AC5ECD600A0861C /* GameViewController.swift in Sources */,
 				288DA03A2AC751640098EA6E /* PlayerNode.swift in Sources */,
 				288DA0362AC750AD0098EA6E /* GameScene+Tools.swift in Sources */,
+				00F89F292ACF41C30046D348 /* MovementComponent.swift in Sources */,
+				00F89F272ACF367A0046D348 /* MovementSystem.swift in Sources */,
+				00F89F242ACF36220046D348 /* VelocityComponent.swift in Sources */,
 				287D35FA2AC5ECD600A0861C /* AppDelegate.swift in Sources */,
+				00F89F222ACF34440046D348 /* PositionComponent.swift in Sources */,
 				008D63572AC71C5600F03EAB /* PhysicsBody+BitMask.swift in Sources */,
 				288DA03C2AC767910098EA6E /* JoystickNode.swift in Sources */,
+				00F89F1F2ACF33020046D348 /* PlayerEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +366,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XJ57BXJG95;
+				DEVELOPMENT_TEAM = QSR9GSRXJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -358,7 +394,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XJ57BXJG95;
+				DEVELOPMENT_TEAM = QSR9GSRXJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
