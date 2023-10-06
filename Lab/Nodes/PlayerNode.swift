@@ -17,14 +17,14 @@ class PlayerNode: SKNode {
         super.init()
         player.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        player.physicsBody = SKPhysicsBody(circleOfRadius: 12)
+        player.physicsBody = SKPhysicsBody(circleOfRadius: 24)
         player.physicsBody?.affectedByGravity = false
         player.physicsBody?.allowsRotation = false
         player.physicsBody?.isDynamic = true
         player.physicsBody?.categoryBitMask = .player
         player.physicsBody?.collisionBitMask = .wall
         
-        player.position = CGPoint(x: 20, y: 10)
+        player.position = CGPoint(x: 0, y: 0)
         self.addChild(player)
     }
     
