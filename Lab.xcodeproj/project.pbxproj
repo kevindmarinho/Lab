@@ -24,6 +24,7 @@
 		288DA0362AC750AD0098EA6E /* GameScene+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DA0352AC750AD0098EA6E /* GameScene+Tools.swift */; };
 		288DA03A2AC751640098EA6E /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DA0392AC751640098EA6E /* PlayerNode.swift */; };
 		288DA03C2AC767910098EA6E /* JoystickNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DA03B2AC767910098EA6E /* JoystickNode.swift */; };
+		288DA0402AD07E4A0098EA6E /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DA03F2AD07E4A0098EA6E /* CameraComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		288DA0352AC750AD0098EA6E /* GameScene+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+Tools.swift"; sourceTree = "<group>"; };
 		288DA0392AC751640098EA6E /* PlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
 		288DA03B2AC767910098EA6E /* JoystickNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickNode.swift; sourceTree = "<group>"; };
+		288DA03F2AD07E4A0098EA6E /* CameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				00F89F212ACF34440046D348 /* PositionComponent.swift */,
 				00F89F232ACF36220046D348 /* VelocityComponent.swift */,
 				00F89F282ACF41C30046D348 /* MovementComponent.swift */,
+				288DA03F2AD07E4A0098EA6E /* CameraComponent.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				287D36002AC5ECD600A0861C /* GameScene.swift in Sources */,
 				287D36022AC5ECD600A0861C /* GameViewController.swift in Sources */,
 				288DA03A2AC751640098EA6E /* PlayerNode.swift in Sources */,
+				288DA0402AD07E4A0098EA6E /* CameraComponent.swift in Sources */,
 				288DA0362AC750AD0098EA6E /* GameScene+Tools.swift in Sources */,
 				00F89F292ACF41C30046D348 /* MovementComponent.swift in Sources */,
 				00F89F272ACF367A0046D348 /* MovementSystem.swift in Sources */,
@@ -374,7 +378,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XJ57BXJG95;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -402,7 +406,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = XJ57BXJG95;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
