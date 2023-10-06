@@ -53,6 +53,7 @@ extension GameScene {
            let playerNode = playerEntity.component(ofType: GKSKNodeComponent.self)?.node {
             addChild(playerNode)
         }
+        
         entities.append(playerEntity!)
     }
 }
