@@ -30,7 +30,7 @@ class GameScene: SKScene {
             }
         }
        
-        creatingPlayer()
+        creatingPlayer(at: CGPoint(x: 100, y: -50))
        
         joystick.joystickBack.isHidden = true
         joystick.joystickButton.isHidden = true
