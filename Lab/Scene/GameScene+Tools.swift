@@ -45,15 +45,22 @@ extension GameScene {
         
     }
     
-    func creatingPlayer() {
+    func creatingPlayer(at position: CGPoint) {
         
-        playerEntity = PlayerEntity(scene: self)
-        
-        if let playerEntity = playerEntity,
-           let playerNode = playerEntity.component(ofType: GKSKNodeComponent.self)?.node {
-            addChild(playerNode)
+        let auxEntity =  PlayerEntity(scene: self)
+        if let node = auxEntity.component(ofType: GKSKNodeComponent.self)?.node {
+            self.addChild(node)
+            node.position = position
         }
         
-        entities.append(playerEntity!)
+        
+//        if let playerEntity = playerEntity,
+//           let playerNode = playerEntity.component(ofType: GKSKNodeComponent.self)?.node {
+//            addChild(playerNode)
+//        }
+        
+        
+        entities.append(auxEntity)
+        playerEntity = auxEntity
     }
 }
