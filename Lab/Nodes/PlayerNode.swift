@@ -24,7 +24,6 @@ class PlayerNode: SKNode {
         player.physicsBody?.categoryBitMask = .player
         player.physicsBody?.collisionBitMask = .wall
         
-      //  player.position = CGPoint(x: 80, y: 80)
         self.addChild(player)
     }
     

@@ -21,7 +21,7 @@ class PlayerEntity: GKEntity {
         let movementComponent = MovementComponent()
         movementComponent.node = playerNode
         self.addComponent(movementComponent)
-        
+                
         if let cameraComponent = scene.camera {
             self.addComponent(CameraComponent(camera: cameraComponent))
         }
