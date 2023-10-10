@@ -16,8 +16,9 @@ class PlayerNode: SKNode {
         player = .init(imageNamed: "kevin")
         super.init()
         player.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        player.setScale(0.80)
         
-        player.physicsBody = SKPhysicsBody(circleOfRadius: 24)
+        player.physicsBody = SKPhysicsBody(circleOfRadius: 20)
         player.physicsBody?.affectedByGravity = false
         player.physicsBody?.allowsRotation = false
         player.physicsBody?.isDynamic = true
