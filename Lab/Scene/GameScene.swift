@@ -26,7 +26,13 @@ class GameScene: SKScene {
             if(node.name == "tileMap") {
                 if let someTileMap: SKTileMapNode = node as? SKTileMapNode {
                     tileMapPhysicsBody(map: someTileMap)
-                    someTileMap.zPosition = -1
+                    someTileMap.zPosition = 0
+                }
+            }
+            
+            if(node.name == "backgroundMap"){
+                if let someTileMap: SKTileMapNode = node as? SKTileMapNode {
+                    someTileMap.zPosition = 1
                 }
             }
         }
