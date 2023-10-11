@@ -30,4 +30,6 @@ class CameraComponent: GKComponent {
     override func update(deltaTime seconds: TimeInterval) {
         camera.position = node?.position ?? .zero
     }
+    
+    
 }
