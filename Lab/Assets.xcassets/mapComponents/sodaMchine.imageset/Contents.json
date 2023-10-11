@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Modern_Office_Singles_175.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Modern_Office_Singles_175-2.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Modern_Office_Singles_175-3.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
