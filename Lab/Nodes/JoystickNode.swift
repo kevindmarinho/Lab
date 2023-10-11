@@ -17,7 +17,8 @@ class JoystickNode: SKNode {
         joystickButton = .init(imageNamed: "JoystickButton")
 
         super.init()
-        
+        joystickBack.position = CGPoint(x: -80, y: -30)
+        joystickButton.position = CGPoint(x: -80, y: -30)
         joystickBack.setScale(1/10)
         joystickButton.setScale(1/10)
         

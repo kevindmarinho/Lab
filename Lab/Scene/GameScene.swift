@@ -19,8 +19,6 @@ class GameScene: SKScene {
     
     override func sceneDidLoad() {
         scene?.addChild(sceneNode)
-    }
-    override func didMove(to view: SKView) {
         
         for node in self.children {
             if(node.name == "tileMap") {
@@ -29,14 +27,22 @@ class GameScene: SKScene {
                 }
             }
         }
+        
+        setupCameraConstraint()
+    }
+    
+    override func didMove(to view: SKView) {
        
         creatingPlayer(at: CGPoint(x: 100, y: -50))
        
         joystick.joystickBack.isHidden = true
         joystick.joystickButton.isHidden = true
-        sceneNode.addChild(joystick)
-        
+        if let camera = camera {
+            camera.addChild(joystick)
+        }
     }
+    
+    
     
     override func update(_ currentTime: TimeInterval) {
         for entity in entities {
@@ -47,27 +53,36 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
-            joystick.joystickBack.position = location
-            joystick.joystickButton.position = location
             
-            if (joystick.joystickButton.frame.contains(location)){
-                joystickInUse = true
-                joystick.joystickButton.isHidden = false
-                joystick.joystickBack.isHidden = false
-            } else {
-                joystickInUse = false
-                joystick.joystickButton.isHidden = true
-                joystick.joystickBack.isHidden = true
+            if let camera = camera {
+                let locationinCamera = convert(location, to: camera)
+                
+                if locationinCamera.x < 0 {
+                    joystick.joystickBack.position = locationinCamera
+                    joystick.joystickButton.position = locationinCamera
+                    joystick.joystickBack.isHidden = false
+                    joystick.joystickButton.isHidden = false
+                    
+                } else {
+                    joystick.joystickButton.isHidden = true
+                    joystick.joystickBack.isHidden = true
+                }
+                if (joystick.joystickButton.frame.contains(locationinCamera)){
+                    joystickInUse = true
+                    
+                } else {
+                    joystickInUse = false
+                }
             }
         }
     }
     
     
-    func touchMoved(touch: UITouch) {
+    func touchMoved(locationInCamera: CGPoint) {
         if (joystickInUse) {
             var direction = CGVector(dx: 0, dy: 0)
-            let location = touch.location(in: self)
-            let vector = CGVector(dx: location.x - joystick.joystickBack.position.x, dy: location.y - joystick.joystickBack.position.y)
+            //let location = touch.location(in: self)
+            let vector = CGVector(dx: locationInCamera.x - joystick.joystickBack.position.x, dy: locationInCamera.y - joystick.joystickBack.position.y)
             
             let distanceFromCenter = hypot(vector.dx, vector.dy)
             let maxDistance = joystick.joystickBack.frame.size.width / 2
@@ -79,7 +94,7 @@ class GameScene: SKScene {
                 
                 direction = CGVector(dx: limitedVector.dx / maxDistance, dy: limitedVector.dy / maxDistance)
             } else {
-                joystick.joystickButton.position = location
+                joystick.joystickButton.position = locationInCamera
                 direction = CGVector(dx: vector.dx / maxDistance, dy: vector.dy / maxDistance)
             }
             
@@ -93,7 +108,12 @@ class GameScene: SKScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            self.touchMoved(touch: touch)
+            let location = touch.location(in: self)
+            
+            if let camera = camera {
+                let locationInCamera = convert(location, to: camera)
+                touchMoved(locationInCamera: locationInCamera)
+            }
         }
     }
     

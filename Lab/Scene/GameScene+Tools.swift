@@ -35,7 +35,7 @@ extension GameScene {
                     tileNode.physicsBody?.allowsRotation = false
                     tileNode.physicsBody?.isDynamic = false
                     tileNode.physicsBody?.friction = 1
-//                    tileNode.zPosition = 1
+                    tileNode.zPosition = 0
                     tileNode.position = CGPoint(x: tileNode.position.x + startLocation.x, y: tileNode.position.y + startLocation.y)
                     
                     self.addChild(tileNode)
@@ -52,15 +52,20 @@ extension GameScene {
             self.addChild(node)
             node.position = position
         }
-        
-        
-//        if let playerEntity = playerEntity,
-//           let playerNode = playerEntity.component(ofType: GKSKNodeComponent.self)?.node {
-//            addChild(playerNode)
-//        }
-        
-        
         entities.append(auxEntity)
         playerEntity = auxEntity
+    }
+    
+    func setupCameraConstraint() {
+        let cameraBoundsWidth = self.frame.width / 2
+        let boundsWidth = self.calculateAccumulatedFrame().width/2 - cameraBoundsWidth
+        
+        let cameraBoundsHeight = self.frame.height/2 - 30
+        let boundsHeight = self.calculateAccumulatedFrame().height/2 - cameraBoundsHeight
+        
+        let cameraConstraintX = SKConstraint.positionX(.init(lowerLimit: -boundsWidth, upperLimit: boundsWidth))
+        let cameraConstraintY = SKConstraint.positionY(.init(lowerLimit: -boundsHeight, upperLimit: boundsHeight))
+        
+        self.camera?.constraints = [cameraConstraintX, cameraConstraintY]
     }
 }
