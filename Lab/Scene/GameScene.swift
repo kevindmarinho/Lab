@@ -16,6 +16,7 @@ class GameScene: SKScene {
     var playerEntity: PlayerEntity?
     var joystickInUse = false
     var entities: [GKEntity] = []
+    var joystickDirection = CGVector(dx: 0, dy: 0)
     
     override func sceneDidLoad() {
         scene?.addChild(sceneNode)
@@ -55,7 +56,16 @@ class GameScene: SKScene {
         for entity in entities {
             entity.update(deltaTime: currentTime)
         }
+
+        if joystickInUse {
+            if let playerEntity = playerEntity {
+                if let movementComponent = playerEntity.component(ofType: MovementComponent.self) {
+                    movementComponent.move()
+                }
+            }
+        }
     }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
@@ -83,28 +93,25 @@ class GameScene: SKScene {
             }
         }
     }
-    
-    
     func touchMoved(locationInCamera: CGPoint) {
         if (joystickInUse) {
             var direction = CGVector(dx: 0, dy: 0)
-            //let location = touch.location(in: self)
             let vector = CGVector(dx: locationInCamera.x - joystick.joystickBack.position.x, dy: locationInCamera.y - joystick.joystickBack.position.y)
-            
             let distanceFromCenter = hypot(vector.dx, vector.dy)
             let maxDistance = joystick.joystickBack.frame.size.width / 2
-            
+
             if distanceFromCenter > maxDistance {
                 let scaleFactor = maxDistance / distanceFromCenter
                 let limitedVector = CGVector(dx: vector.dx * scaleFactor, dy: vector.dy * scaleFactor)
                 joystick.joystickButton.position = CGPoint(x: joystick.joystickBack.position.x + limitedVector.dx, y: joystick.joystickBack.position.y + limitedVector.dy)
-                
                 direction = CGVector(dx: limitedVector.dx / maxDistance, dy: limitedVector.dy / maxDistance)
             } else {
                 joystick.joystickButton.position = locationInCamera
                 direction = CGVector(dx: vector.dx / maxDistance, dy: vector.dy / maxDistance)
             }
-            
+
+            joystickDirection = direction
+
             if let playerEntity = playerEntity {
                 if let movementComponent = playerEntity.component(ofType: MovementComponent.self) {
                     movementComponent.changeDirection(direction)
@@ -112,6 +119,8 @@ class GameScene: SKScene {
             }
         }
     }
+
+
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
@@ -129,6 +138,7 @@ class GameScene: SKScene {
             joystickInUse = false
             joystick.joystickButton.isHidden = true
             joystick.joystickBack.isHidden = true
+            joystickDirection = CGVector(dx: 0, dy: 0)
         }
     }
 }
